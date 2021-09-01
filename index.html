@@ -25,38 +25,54 @@
   </head>
   <body>
     <div class="conteiner">
-      <div class="weather-app">
-        <h1>New York</h1>
-        <ul>
-          <li>Friday 05:00</li>
-          <li>Clear</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            12 ºC |ºF
-            <i class="fas fa-cloud-sun"></i>
-          </div>
-          <div class="col-6">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <div class="overview">
+            <h1>New York</h1>
             <ul>
-              <li>Feels like: <span id="feels-like"> </span></li>
-              <li>Maximum: <span id="maximum"> </span></li>
-              <li>Minimum: <span id="minimum"> </span></li>
-              <li>Wind: <span id="wind"> </span></li>
-              <li>Humidity: <span id="humidity"> </span></li>
+              <li>Friday 05:00</li>
+              <li>Clear</li>
             </ul>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix">
+                <span class="float-left">
+                    <span class="temperature"> 12
+                    </span>
+                    <span class="unit-temp">
+                    <small>
+                    <a id= unitCelsius href="#" >ºC | 
+                    <a id= unitFarenhe href="#" > ºF
+                    </a> 
+                    </small>
+                    </span>
+		        </span>
+                <i class="fas fa-cloud-sun" class="float-left"></i>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Feels like: <span id="feels-like"> </span></li>
+                <li>Maximum: <span id="maximum"> </span></li>
+                <li>Minimum: <span id="minimum"> </span></li>
+                <li>Wind: <span id="wind"> </span></li>
+                <li>Humidity: <span id="humidity"> </span></li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small class="open-source">
+          <a
+            id="link-github"
+            href="https://github.com/Wraquel/Weather-app"
+            target="_blank"
+          >
+            Open-source code </a
+          >, by Raquel Wetzel
+        </small>
       </div>
     </div>
-    <small class="open-source">
-      <a
-        id="link-github"
-        href="https://github.com/Wraquel/Weather-app"
-        target="_blank"
-      >
-        Open-source code </a
-      >, by Raquel Wetzel
-    </small>
     <script src="src/index-pre.js"></script>
   </body>
 </html>

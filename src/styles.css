@@ -1,6 +1,8 @@
-.weather-app {
-  max-width: 600px;
+.weather-app-wrapper {
+  max-width: 700px;
   margin: 30px auto;
+}
+.weather-app {
   padding: 20px;
   border-radius: 5px;
   border: 1px solid #dadde1;
@@ -24,4 +26,21 @@ li {
   margin: 0;
   padding: 0;
   height: 25px;
+}
+.temperature {
+  font-size: 50px;
+}
+.fa-cloud-sun {
+  font-size: 65px;
+}
+#unitFarenhe {
+  text-decoration: none;
+}
+#unitCelsius {
+  text-decoration: none;
+}
+.unit-temp {
+  position: relative;
+  bottom: 30px;
+  right: 15px;
 }
