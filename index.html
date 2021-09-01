@@ -20,25 +20,48 @@
       src="https://kit.fontawesome.com/43c43aef87.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
     <div class="conteiner">
-      <div class="weather-app-wrapper">
-        <div class="weather-app">
+        <div class="weather-app-wrapper">
+            <div class="weather-app">
+            <form class="search-form" id="search-form">
+        <div class="row">
+            <div class="col-8">
+            <input
+            type="search"
+            placeholder="Type a city.."
+            autofocus="on"
+            autocomplete="off"
+            id="city-input"
+            class="form-control shadow-sm"
+            />
+            </div>
+            <div class="col-4">
+            <input
+            id="search-button"
+            type="submit"
+            value="Search  🔍"
+            class="form-control btn btn-primary shadow-sm"
+            />
+            </div>
+        </div>
+           </form>
           <div class="overview">
-            <h1>New York</h1>
+            <h1></h1>
             <ul>
               <li>Friday 05:00</li>
-              <li>Clear</li>
+              <li class="description"></li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="clearfix">
                 <span class="float-left">
-                    <span class="temperature"> 12
+                    <span class="temperature">
                     </span>
                     <span class="unit-temp">
                     <small>
@@ -55,7 +78,7 @@
               <ul>
                 <li>Feels like: <span id="feels-like"> </span></li>
                 <li>Maximum: <span id="maximum"> </span></li>
-                <li>Minimum: <span id="minimum"> </span></li>
+                <li>MinimNum: <span id="minimum"> </span></li>
                 <li>Wind: <span id="wind"> </span></li>
                 <li>Humidity: <span id="humidity"> </span></li>
               </ul>
@@ -73,6 +96,6 @@
         </small>
       </div>
     </div>
-    <script src="src/index-pre.js"></script>
+    <script src="src/index.js"></script>
   </body>
 </html>

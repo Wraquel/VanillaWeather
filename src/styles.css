@@ -26,6 +26,7 @@ li {
   margin: 0;
   padding: 0;
   height: 25px;
+  text-transform: capitalize;
 }
 .temperature {
   font-size: 50px;
@@ -42,5 +43,4 @@ li {
 .unit-temp {
   position: relative;
   bottom: 30px;
-  right: 15px;
 }
