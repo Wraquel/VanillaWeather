@@ -57,6 +57,12 @@ function showTemperature(response) {
 
   let dateInfo = document.querySelector(".current-day-time");
   dateInfo.innerHTML = formatDate(response.data.dt * 1000);
+
+  let iconInfo = document.querySelector("#icon");
+  iconInfo.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function showCity(city) {

@@ -1,5 +1,5 @@
 .weather-app-wrapper {
-  max-width: 700px;
+  max-width: 600px;
   margin: 30px auto;
 }
 .weather-app {
@@ -45,11 +45,10 @@ li::first-letter {
 .temperature {
   font-size: 60px;
 }
-.fa-cloud-sun {
-  font-size: 65px;
+#icon {
+  width: 120px;
   position: relative;
-  bottom: 20px;
-  left: 50px;
+  bottom: 45px;
 }
 #unitFarenhe {
   text-decoration: none;
