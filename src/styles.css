@@ -50,15 +50,19 @@ li::first-letter {
   position: relative;
   bottom: 45px;
 }
-#unitFarenhe {
+#link-Fahrenheit {
   text-decoration: none;
 }
-#unitCelsius {
+#link-Celsius {
   text-decoration: none;
 }
 .unit-temp {
   position: relative;
   bottom: 30px;
+}
+.weather-app .active {
+  color: black;
+  cursor: default;
 }
 #parametros {
   position: relative;

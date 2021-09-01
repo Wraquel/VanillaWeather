@@ -34,8 +34,9 @@ function showTemperature(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
 
+  celsiusTemperature = Math.round(response.data.main.temp);
   let temperatureInfo = document.querySelector(".temperature");
-  temperatureInfo.innerHTML = Math.round(response.data.main.temp);
+  temperatureInfo.innerHTML = celsiusTemperature;
 
   let feelslikeInfo = document.querySelector("#feels-like");
   feelslikeInfo.innerHTML = Math.round(response.data.main.feels_like);
@@ -72,6 +73,32 @@ function showCity(city) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function showlinkFahrenheit(event) {
+  event.preventDefault();
+  linkCelsius.classList.remove("active");
+  linkFahrenheit.classList.add("active");
+  let temperatureFahrenheit = document.querySelector(".temperature");
+  temperatureFahrenheit.innerHTML = Math.round(
+    (celsiusTemperature * 9) / 5 + 32
+  );
+}
+
+function showlinkCelsius(event) {
+  event.preventDefault();
+  linkCelsius.classList.add("active");
+  linkFahrenheit.classList.remove("active");
+  let temperatureCelsius = document.querySelector(".temperature");
+  temperatureCelsius.innerHTML = Math.round(celsiusTemperature);
+}
+
+let linkFahrenheit = document.querySelector("#link-Fahrenheit");
+linkFahrenheit.addEventListener("click", showlinkFahrenheit);
+
+celsiusTemperature = null;
+
+let linkCelsius = document.querySelector("#link-Celsius");
+linkCelsius.addEventListener("click", showlinkCelsius);
+
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
@@ -80,4 +107,5 @@ function handleSubmit(event) {
 
 let searchcityForm = document.querySelector("#search-form");
 searchcityForm.addEventListener("submit", handleSubmit);
+
 showCity("Lisbon");

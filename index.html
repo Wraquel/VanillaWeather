@@ -26,30 +26,30 @@
   </head>
   <body>
     <div class="conteiner">
-        <div class="weather-app-wrapper">
-            <div class="weather-app">
-            <form class="search-form" id="search-form">
-        <div class="row">
-            <div class="col-6">
-            <input
-            type="search"
-            placeholder="Type a city.."
-            autofocus="on"
-            autocomplete="off"
-            id="city-input"
-            class="form-control shadow-sm"
-            />
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form class="search-form" id="search-form">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="search"
+                  placeholder="Type a city.."
+                  autofocus="on"
+                  autocomplete="off"
+                  id="city-input"
+                  class="form-control shadow-sm"
+                />
+              </div>
+              <div class="col-4">
+                <input
+                  id="search-button"
+                  type="submit"
+                  value="Search  🔍"
+                  class="form-control btn btn-primary shadow-sm"
+                />
+              </div>
             </div>
-            <div class="col-4">
-            <input
-            id="search-button"
-            type="submit"
-            value="Search  🔍"
-            class="form-control btn btn-primary shadow-sm"
-            />
-            </div>
-        </div>
-           </form>
+          </form>
           <div class="overview">
             <h1></h1>
             <ul>
@@ -61,16 +61,14 @@
             <div class="col-6">
               <div class="clearfix">
                 <span class="float-left">
-                    <span class="temperature">
-                    </span>
-                    <span class="unit-temp">
+                  <span class="temperature"> </span>
+                  <span class="unit-temp">
                     <small>
-                    <a id= unitCelsius href="#" >ºC | 
-                    <a id= unitFarenhe href="#" > ºF
-                    </a> 
+                      <a id="link-Celsius" class="active" href="#">ºC </a>|
+                      <a id="link-Fahrenheit" href="#"> ºF </a>
                     </small>
-                    </span>
-		        </span>
+                  </span>
+                </span>
                 <img src="" id="icon" class="float-left" />
               </div>
             </div>
