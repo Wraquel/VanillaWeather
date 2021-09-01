@@ -1,27 +1,62 @@
+function formatDate(timestemp) {
+  let date = new Date(timestemp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = days[date.getDay()];
+  let currentDate = date.getDate();
+  let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+  let currentMonth = months[date.getMonth()];
+  let currentHours = date.getHours();
+  let currentMinutes = date.getMinutes();
+  if (currentDate < 10) {
+    currentDate = `0${currentDate}`;
+  }
+  if (currentMonth < 10) {
+    currentMonth = `0${currentMonth}`;
+  }
+  if (currentHours < 10) {
+    currentHours = `0${currentHours}`;
+  }
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  return `${currentDay}, ${currentDate}/${currentMonth}, ${currentHours}:${currentMinutes}`;
+}
+
 function showTemperature(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
-  let cityTemp = document.querySelector(".temperature");
-  cityTemp.innerHTML = `${temperature}`;
-  let feelsLike = Math.round(response.data.main.feels_like);
+
+  let temperatureInfo = document.querySelector(".temperature");
+  temperatureInfo.innerHTML = Math.round(response.data.main.temp);
+
   let feelslikeInfo = document.querySelector("#feels-like");
-  feelslikeInfo.innerHTML = `${feelsLike}º`;
-  let maximum = Math.round(response.data.main.temp_max);
+  feelslikeInfo.innerHTML = Math.round(response.data.main.feels_like);
+
   let maxInfo = document.querySelector("#maximum");
-  maxInfo.innerHTML = `${maximum}º`;
-  let minimum = Math.round(response.data.main.temp_min);
+  maxInfo.innerHTML = Math.round(response.data.main.temp_max);
+
   let minInfo = document.querySelector("#minimum");
-  minInfo.innerHTML = `${minimum}º`;
-  let humidity = Math.round(response.data.main.humidity);
+  minInfo.innerHTML = Math.round(response.data.main.temp_min);
+
   let humidityInfo = document.querySelector("#humidity");
-  humidityInfo.innerHTML = `${humidity}%`;
-  let wind = Math.round(response.data.wind.speed);
+  humidityInfo.innerHTML = Math.round(response.data.main.humidity);
+
   let windInfo = document.querySelector("#wind");
-  windInfo.innerHTML = `${wind}%`;
-  let weatherDescription = response.data.weather[0].main;
-  let weathertextDescription = document.querySelector(".description");
-  weathertextDescription.innerHTML = `${weatherDescription}`;
+  windInfo.innerHTML = Math.round(response.data.wind.speed);
+
+  let descriptionInfo = document.querySelector(".description");
+  descriptionInfo.innerHTML = response.data.weather[0].main;
+
+  let dateInfo = document.querySelector(".current-day-time");
+  dateInfo.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function showCity(city) {

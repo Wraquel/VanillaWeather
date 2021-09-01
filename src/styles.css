@@ -8,13 +8,17 @@
   border: 1px solid #dadde1;
   font-family: "Hahmlet", serif;
   background: linear-gradient(
-    178.6deg,
-    rgb(232, 245, 253) 3.3%,
-    rgb(252, 253, 255) 109.6%
+    180.3deg,
+    rgb(221, 221, 221) 5.5%,
+    rgb(110, 136, 161) 90.2%
   );
 }
+#search-form {
+  margin-bottom: 10px;
+}
+
 h1 {
-  font-size: 38px;
+  font-size: 35px;
   margin-bottom: 0;
 }
 ul {
@@ -25,14 +29,27 @@ li {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  height: 25px;
+  height: 24px;
+}
+li::first-letter {
   text-transform: capitalize;
 }
+.description {
+  position: relative;
+  font-size: 20px;
+  bottom: 9px;
+  color: #0d6efd;
+  font-weight: bolder;
+  line-height: 50px;
+}
 .temperature {
-  font-size: 50px;
+  font-size: 60px;
 }
 .fa-cloud-sun {
   font-size: 65px;
+  position: relative;
+  bottom: 20px;
+  left: 50px;
 }
 #unitFarenhe {
   text-decoration: none;
@@ -43,4 +60,8 @@ li {
 .unit-temp {
   position: relative;
   bottom: 30px;
+}
+#parametros {
+  position: relative;
+  bottom: 50px;
 }
