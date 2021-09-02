@@ -64,3 +64,26 @@ li::first-letter {
   position: relative;
   bottom: 50px;
 }
+hr {
+  color: #0d6efd;
+  margin-top: -5px;
+}
+
+.col {
+  text-align: center;
+}
+.forecast-temperature-max {
+  font-size: 13px;
+}
+.forecast-temperature-min {
+  font-size: 13px;
+}
+
+i {
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.forecast-days {
+  line-height: 35px;
+}
