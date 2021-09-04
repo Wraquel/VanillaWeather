@@ -73,22 +73,35 @@ function showTemperature(response) {
   getForecast(response.data.coord);
 }
 
+function formatDay(timestemp) {
+  let date = new Date(timestemp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function showForecast(response) {
+  let forecast = response.data.daily;
   let forecastInfo = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col">
-                <div class="forecast-days">${day}</div>
-                <div><i class="fas fa-sun"></i></div>
-                <span class="forecast-temperature-max">30°</span>/<span
+                <div class="forecast-days">${formatDay(forecastDay.dt)}</div>
+                <div><img src= "https://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt="" width ="55" /></div>
+                <span class="forecast-temperature-max">${Math.round(
+                  forecastDay.temp.max
+                )}°</span>/<span
                   class="forecast-temperature-min"
-                  >18º</span
+                  >${Math.round(forecastDay.temp.min)}º</span
                   >
                   </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
 
