@@ -1,3 +1,15 @@
+function formatHour(timestemp) {
+  let date = new Date(timestemp);
+  let currentHours = date.getHours();
+  let currentMinutes = date.getMinutes();
+  if (currentHours < 10) {
+    currentHours = `0${currentHours}`;
+  }
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  return ` ${currentHours}:${currentMinutes}`;
+}
 function formatDate(timestemp) {
   let date = new Date(timestemp);
   let days = [
@@ -13,21 +25,15 @@ function formatDate(timestemp) {
   let currentDate = date.getDate();
   let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   let currentMonth = months[date.getMonth()];
-  let currentHours = date.getHours();
-  let currentMinutes = date.getMinutes();
+
   if (currentDate < 10) {
     currentDate = `0${currentDate}`;
   }
   if (currentMonth < 10) {
     currentMonth = `0${currentMonth}`;
   }
-  if (currentHours < 10) {
-    currentHours = `0${currentHours}`;
-  }
-  if (currentMinutes < 10) {
-    currentMinutes = `0${currentMinutes}`;
-  }
-  return `${currentDay}, ${currentDate}/${currentMonth}, ${currentHours}:${currentMinutes}`;
+
+  return `${currentDay} ${currentDate}/${currentMonth}`;
 }
 function getForecast(coordinates) {
   let apiKey = "16830bfc1e47231d3a538e2cfef02d61";
@@ -54,8 +60,10 @@ function showTemperature(response) {
   windInfo.innerHTML = Math.round(response.data.wind.speed);
   let descriptionInfo = document.querySelector(".description");
   descriptionInfo.innerHTML = response.data.weather[0].main;
-  let dateInfo = document.querySelector(".current-day-time");
+  let dateInfo = document.querySelector(".current-day");
   dateInfo.innerHTML = formatDate(response.data.dt * 1000);
+  let updateInfo = document.querySelector(".last-updated-hour");
+  updateInfo.innerHTML = formatHour(response.data.dt * 1000);
   let iconInfo = document.querySelector("#icon");
   iconInfo.setAttribute(
     "src",
