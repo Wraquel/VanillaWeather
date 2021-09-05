@@ -27,10 +27,10 @@
   <body>
     <div class="conteiner">
       <div class="weather-app-wrapper">
-        <div class="weather-app">
+        <div class="weather-app" >
           <form class="search-form" id="search-form">
             <div class="row">
-              <div class="col-6">
+              <div class="col-6 ">
                 <input
                   type="search"
                   placeholder="Type a city.."
@@ -40,13 +40,16 @@
                   class="form-control shadow-sm"
                 />
               </div>
-              <div class="col-4">
+              <div class="col-2">
                 <input
                   id="search-button"
                   type="submit"
                   value="Search"
                   class="form-control btn btn-primary shadow-sm"
                 />
+              </div>
+              <div class="col-4"> 
+                <button type="button" id = "current-button" class="btn btn-primary shadow-sm">Current Location</button>
               </div>
             </div>
           </form>
@@ -57,16 +60,15 @@
               <li class="description"></li>
             </ul>
           </div>
+          <br>
           <div class="row">
             <div class="col-6">
               <div class="clearfix">
                 <span class="float-left">
                   <span class="temperature"> </span>
-                  <span class="unit-temp">
-                    <small>
-                      <a id="link-Celsius" class="active" href="#">ºC </a>|
-                      <a id="link-Fahrenheit" href="#"> ºF </a>
-                    </small>
+                  <span class="celsius">
+                    <small> ºC 
+                      </small>
                   </span>
                 </span>
                 <img src="" id="icon" class="float-left" />
@@ -86,7 +88,6 @@
           <div class="weathering-forecast" id="forecast">
             
         </div>
-        <br>
         <small>
           <div class="last-updated">
           Last updated <span class="last-updated-hour"></span>
@@ -94,6 +95,7 @@
       </div>
         </small> 
     
+      </div>
       <div class="open-source"> Open-source code by
         <a
           id="link-github"
@@ -101,7 +103,6 @@
           target="_blank"
         > Raquel Wetzel
       </a>
-    </div>
     </div>
     <script src="src/index.js"></script>
   </body>
