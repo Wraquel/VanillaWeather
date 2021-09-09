@@ -9,9 +9,8 @@ body {
 }
 .weather-app {
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.13);
+  border: 1px solid rgba(204, 204, 204, 0.13);
   font-family: "Hahmlet", serif;
-  background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
 #search-button,
@@ -21,7 +20,7 @@ body {
 }
 #city-input {
   background-color: #faf9f0;
-  border-color: #132743;
+  border-color: #13274398;
 }
 #search-button:hover {
   background-color: #faf9f0;

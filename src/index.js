@@ -82,14 +82,17 @@ function showTemperature(response) {
     description === "Thunderstorm" ||
     description === "Drizzle"
   ) {
-    document.body.style.backgroundImage =
-      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/867/original/rain.jpg?1631187411)";
+    document.getElementById("weather-app").style.backgroundImage =
+      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
+    document.body.style.backgroundImage = "url(media/rain.jpg)";
   } else if (description === "Clouds") {
-    document.body.style.backgroundImage =
-      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/875/original/wp6680329.jpg?1631196167)";
+    document.getElementById("weather-app").style.backgroundImage =
+      "linear-gradient(to top, #fcd9be 0%, #aed9fc 100%)";
+    document.body.style.backgroundImage = "url(media/clouds.jpg)";
   } else if (description === "Clear") {
-    document.body.style.backgroundImage =
-      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/877/original/clear.jpg?1631199420)";
+    document.getElementById("weather-app").style.backgroundImage =
+      "linear-gradient(to top, #fcd9be 0%, #aed9fc 100%)";
+    document.body.style.backgroundImage = "url(media/clear.jpg)";
   } else if (
     description === "Mist" ||
     description === "Smoke" ||
@@ -99,9 +102,15 @@ function showTemperature(response) {
     description === "Sand" ||
     description === "Ash"
   ) {
-    document.body.style.backgroundImage =
-      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/878/original/701767.jpg?1631200692)";
+    document.getElementById("weather-app").style.backgroundImage =
+      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
+    document.body.style.backgroundImage = "url(media/fog.jpg)";
+  } else if (description === "Snow") {
+    document.getElementById("weather-app").style.backgroundImage =
+      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
+    document.body.style.backgroundImage = "url(media/snow.jpg)";
   }
+
   getForecast(response.data.coord);
 }
 
@@ -114,14 +123,14 @@ function showForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-              <div class="col">
-                <div class="forecast-days">${formatDay(forecastDay.dt)}</div>
-                <div><img src= "https://openweathermap.org/img/wn/${
-                  forecastDay.weather[0].icon
-                }@2x.png" alt="" width ="55" /></div>
-                <span class="forecast-temperature-max">${Math.round(
-                  forecastDay.temp.max
-                )}°</span>/<span
+      <div class="col">
+      <div class="forecast-days">${formatDay(forecastDay.dt)}</div>
+      <div><img src= "https://openweathermap.org/img/wn/${
+        forecastDay.weather[0].icon
+      }@2x.png" alt="" width ="55" /></div>
+      <span class="forecast-temperature-max">${Math.round(
+        forecastDay.temp.max
+      )}°</span>/<span
                   class="forecast-temperature-min"
                   >${Math.round(forecastDay.temp.min)}º</span
                   >
@@ -161,4 +170,4 @@ searchcityForm.addEventListener("submit", handleSubmit);
 let currentcityButton = document.querySelector("#current-button");
 currentcityButton.addEventListener("click", showCurrentcity);
 
-showCity("Rio de Janeiro, BR");
+showCity("Lisbon, PT");
