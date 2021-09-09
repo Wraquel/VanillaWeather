@@ -24,20 +24,20 @@
     <title>Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
-  <body>
+  <body style="background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/855/original/bluesky.jpg?1631173977);
+">
     <div class="conteiner">
       <div class="weather-app-wrapper">
-        <div class="weather-app" >
+        <div class="weather-app shadow rounded-3 mt-5 mb-4 mx-3 py-4 px-5" id="weather-app">
           <form class="search-form" id="search-form">
             <div class="row">
               <div class="col-6 ">
                 <input
                   type="search"
-                  placeholder="Type a city.."
-                  autofocus="on"
+                  placeholder="Type a city"
                   autocomplete="off"
                   id="city-input"
-                  class="form-control shadow-sm"
+                  class="form-control p-5px shadow-sm"
                 />
               </div>
               <div class="col-2">
@@ -45,19 +45,19 @@
                   id="search-button"
                   type="submit"
                   value="Search"
-                  class="form-control btn btn-primary shadow-sm"
+                  class="form-control btn btn-dark shadow-sm"
                 />
               </div>
               <div class="col-4"> 
-                <button type="button" id = "current-button" class="btn btn-primary shadow-sm">Current Location</button>
+                <button  id = "current-button" type="button" class="btn btn-dark shadow-sm">Current Location</button>
               </div>
             </div>
           </form>
           <div class="overview">
             <h1></h1>
-            <ul>
+            <ul class="list-description p-0 mb-1">
               <li class="current-day"></li>
-              <li class="description"></li>
+              <li class="description fs-4"></li>
             </ul>
           </div>
           <br>
@@ -74,7 +74,7 @@
                 <img src="" id="icon" class="float-left" />
               </div>
             </div>
-            <div class="col-6" id="parametros">
+            <div class="col-6 p-0 mb-1" id="parametros">
               <ul>
                 <li>Feels like: <span id="feels-like"> </span>º</li>
                 <li>Maximum: <span id="maximum"> </span>º</li>
@@ -86,7 +86,6 @@
           </div>
           <hr />
           <div class="weathering-forecast" id="forecast">
-            
         </div>
         <small>
           <div class="last-updated">
@@ -95,15 +94,15 @@
       </div>
         </small> 
     
+        <div class="open-source"> Open-source code by
+          <a
+            id="link-github"
+            href="https://github.com/Wraquel/Weather-app-RaquelW"
+            target="_blank"
+          > Raquel W.
+        </a>
       </div>
-      <div class="open-source"> Open-source code by
-        <a
-          id="link-github"
-          href="https://github.com/Wraquel/Weather-app-RaquelW"
-          target="_blank"
-        > Raquel Wetzel
-      </a>
-    </div>
+      </div>
     <script src="src/index.js"></script>
   </body>
 </html>
