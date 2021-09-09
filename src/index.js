@@ -42,8 +42,10 @@ function getForecast(coordinates) {
 }
 
 function showTemperature(response) {
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = response.data.name;
+  let cityInfo = document.querySelector(".city");
+  cityInfo.innerHTML = response.data.name;
+  let countryInfo = document.querySelector(".country");
+  countryInfo.innerHTML = response.data.sys.country;
   celsiusTemperature = Math.round(response.data.main.temp);
   let temperatureInfo = document.querySelector(".temperature");
   temperatureInfo.innerHTML = celsiusTemperature;
@@ -135,4 +137,4 @@ searchcityForm.addEventListener("submit", handleSubmit);
 let currentcityButton = document.querySelector("#current-button");
 currentcityButton.addEventListener("click", showCurrentcity);
 
-showCity("Lisbon");
+showCity("Rio de Janeiro, BR");

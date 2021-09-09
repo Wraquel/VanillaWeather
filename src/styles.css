@@ -29,12 +29,12 @@ body {
 }
 #search-button:hover {
   background-color: #faf9f0;
-  color: black;
+  color: rgba(0, 0, 0, 0.9);
   transition: ease-in-out 2ms;
 }
 #current-button:hover {
   background-color: #faf9f0;
-  color: black;
+  color: rgba(0, 0, 0, 0.9);
   transition: ease-in-out 2ms;
 }
 
@@ -72,7 +72,6 @@ li::first-letter {
   bottom: 60px;
 }
 hr {
-  color: black;
   margin-top: -5px;
 }
 
