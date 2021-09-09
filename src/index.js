@@ -10,6 +10,12 @@ function formatHour(timestemp) {
   }
   return ` ${currentHours}:${currentMinutes}`;
 }
+function formatDay(timestemp) {
+  let date = new Date(timestemp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 function formatDate(timestemp) {
   let date = new Date(timestemp);
   let days = [
@@ -60,7 +66,8 @@ function showTemperature(response) {
   let windInfo = document.querySelector("#wind");
   windInfo.innerHTML = Math.round(response.data.wind.speed);
   let descriptionInfo = document.querySelector(".description");
-  descriptionInfo.innerHTML = response.data.weather[0].main;
+  let description = response.data.weather[0].main;
+  descriptionInfo.innerHTML = description;
   let dateInfo = document.querySelector(".current-day");
   dateInfo.innerHTML = formatDate(response.data.dt * 1000);
   let updateInfo = document.querySelector(".last-updated-hour");
@@ -70,15 +77,32 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
+  if (
+    description === "Rain" ||
+    description === "Thunderstorm" ||
+    description === "Drizzle"
+  ) {
+    document.body.style.backgroundImage =
+      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/867/original/rain.jpg?1631187411)";
+  } else if (description === "Clouds") {
+    document.body.style.backgroundImage =
+      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/875/original/wp6680329.jpg?1631196167)";
+  } else if (description === "Clear") {
+    document.body.style.backgroundImage =
+      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/877/original/clear.jpg?1631199420)";
+  } else if (
+    description === "Mist" ||
+    description === "Smoke" ||
+    description === "Fog" ||
+    description === "Haze" ||
+    description === "Dust" ||
+    description === "Sand" ||
+    description === "Ash"
+  ) {
+    document.body.style.backgroundImage =
+      "url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/878/original/701767.jpg?1631200692)";
+  }
   getForecast(response.data.coord);
-}
-
-function formatDay(timestemp) {
-  let date = new Date(timestemp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[day];
 }
 
 function showForecast(response) {

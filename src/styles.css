@@ -1,6 +1,5 @@
 body {
-  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/016/855/original/bluesky.jpg?1631173977);
-  color: black;
+  color: #132743;
 }
 
 .weather-app-wrapper {
@@ -9,37 +8,34 @@ body {
   margin: auto;
 }
 .weather-app {
+  border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.13);
   font-family: "Hahmlet", serif;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(203, 227, 252) 0%,
-    rgb(250, 239, 215) 90%
-  );
+  background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
 #search-button,
 #current-button {
-  background-color: rgba(0, 0, 0, 0.9);
-  border-color: rgba(0, 0, 0, 0.9);
+  background-color: #132743;
+  border-color: #132743;
 }
 #city-input {
   background-color: #faf9f0;
-  border-color: rgba(0, 0, 0, 0.4);
+  border-color: #132743;
 }
 #search-button:hover {
   background-color: #faf9f0;
-  color: rgba(0, 0, 0, 0.9);
+  color: #132743;
   transition: ease-in-out 2ms;
 }
 #current-button:hover {
   background-color: #faf9f0;
-  color: rgba(0, 0, 0, 0.9);
+  color: #132743;
   transition: ease-in-out 2ms;
 }
 
 h1 {
-  color: orangered;
+  color: #132743;
   font-size: 35px;
   margin: 10px auto 0px auto;
 }
@@ -51,6 +47,7 @@ li::first-letter {
   text-transform: capitalize;
 }
 .description {
+  color: orangered;
   font-weight: bolder;
   line-height: 35px;
 }
