@@ -52,6 +52,9 @@ function showTemperature(response) {
   cityInfo.innerHTML = response.data.name;
   let countryInfo = document.querySelector(".country");
   countryInfo.innerHTML = response.data.sys.country;
+  let descriptionInfo = document.querySelector(".description");
+  let description = response.data.weather[0].main;
+  descriptionInfo.innerHTML = description;
   celsiusTemperature = Math.round(response.data.main.temp);
   let temperatureInfo = document.querySelector(".temperature");
   temperatureInfo.innerHTML = celsiusTemperature;
@@ -74,13 +77,6 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
-  getForecast(response.data.coord);
-}
-function showDescription(response) {
-  let descriptionInfo = document.querySelector(".description");
-  let description = response.data.weather[0].main;
-  descriptionInfo.innerHTML = description;
   if (
     description === "Rain" ||
     description === "Thunderstorm" ||
@@ -114,6 +110,8 @@ function showDescription(response) {
       "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
     document.body.style.backgroundImage = "url(media/snow.jpg)";
   }
+
+  getForecast(response.data.coord);
 }
 
 function showForecast(response) {
@@ -148,7 +146,6 @@ function showCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
-  axios.get(apiUrl).then(showDescription);
 }
 function showPosition(position) {
   let apiKey = "16830bfc1e47231d3a538e2cfef02d61";
