@@ -87,11 +87,11 @@ function showTemperature(response) {
     document.body.style.backgroundImage = "url(media/rain.jpg)";
   } else if (description === "Clouds") {
     document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to top, #fcd9be 0%, #aed9fc 100%)";
+      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
     document.body.style.backgroundImage = "url(media/clouds.jpg)";
   } else if (description === "Clear") {
     document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to top, #fcd9be 0%, #aed9fc 100%)";
+      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
     document.body.style.backgroundImage = "url(media/clear.jpg)";
   } else if (
     description === "Mist" ||
