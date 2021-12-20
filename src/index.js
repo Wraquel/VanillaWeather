@@ -1,6 +1,8 @@
-function formatHour(timestemp) {
-  let date = new Date(timestemp);
-  let currentHours = date.getHours();
+//Time's settings //
+
+function formatHour(unixTimestemp, timeZone) {
+  let date = new Date(unixTimestemp * 1000);
+  let currentHours = (date.getUTCHours() + timeZone + 24) % 24;
   let currentMinutes = date.getMinutes();
   if (currentHours < 10) {
     currentHours = `0${currentHours}`;
@@ -8,14 +10,27 @@ function formatHour(timestemp) {
   if (currentMinutes < 10) {
     currentMinutes = `0${currentMinutes}`;
   }
+
+  //********  Display different backgrounds for day/night //
+  if ((currentHours >= 7) & (currentHours <= 17)) {
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(media/background-day.png)";
+  } else {
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(media/background-night.png)";
+  }
   return ` ${currentHours}:${currentMinutes}`;
 }
+
+//Day's settings //
 function formatDay(timestemp) {
   let date = new Date(timestemp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
+
+//Date's settings //
 function formatDate(timestemp) {
   let date = new Date(timestemp);
   let days = [
@@ -41,12 +56,15 @@ function formatDate(timestemp) {
 
   return `${currentDay} ${currentDate}/${currentMonth}`;
 }
+
+//Forecast's settings //
 function getForecast(coordinates) {
   let apiKey = "16830bfc1e47231d3a538e2cfef02d61";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
 
+//Parameter's settings //
 function showTemperature(response) {
   let cityInfo = document.querySelector(".city");
   cityInfo.innerHTML = response.data.name;
@@ -70,56 +88,26 @@ function showTemperature(response) {
   windInfo.innerHTML = Math.round(response.data.wind.speed);
   let dateInfo = document.querySelector(".current-day");
   dateInfo.innerHTML = formatDate(response.data.dt * 1000);
-  let updateInfo = document.querySelector(".last-updated-hour");
-  updateInfo.innerHTML = formatHour(response.data.dt * 1000);
+  let timezone = response.data.timezone / 3600;
+  let updateInfo = document.querySelector(".local-time");
+  let currentLocalTime = formatHour(Date.now() / 1000, timezone);
+  updateInfo.innerHTML = `Local time ${currentLocalTime}`;
   let iconInfo = document.querySelector("#icon");
   iconInfo.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  if (
-    description === "Rain" ||
-    description === "Thunderstorm" ||
-    description === "Drizzle"
-  ) {
-    document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
-    document.body.style.backgroundImage = "url(media/rain.jpg)";
-  } else if (description === "Clouds") {
-    document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
-    document.body.style.backgroundImage = "url(media/clouds.jpg)";
-  } else if (description === "Clear") {
-    document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
-    document.body.style.backgroundImage = "url(media/clear.jpg)";
-  } else if (
-    description === "Mist" ||
-    description === "Smoke" ||
-    description === "Fog" ||
-    description === "Haze" ||
-    description === "Dust" ||
-    description === "Sand" ||
-    description === "Ash"
-  ) {
-    document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
-    document.body.style.backgroundImage = "url(media/fog.jpg)";
-  } else if (description === "Snow") {
-    document.getElementById("weather-app").style.backgroundImage =
-      "linear-gradient(to bottom, #9fa8b1 0%, #c3cbda 52%, #ebebeb 100%)";
-    document.body.style.backgroundImage = "url(media/snow.jpg)";
-  }
 
   getForecast(response.data.coord);
 }
 
+// Display Forecast for the next days //
 function showForecast(response) {
   let forecast = response.data.daily;
   let forecastInfo = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index > 0 && index < 5) {
+    if (index > 0 && index < 6) {
       forecastHTML =
         forecastHTML +
         `
@@ -141,12 +129,16 @@ function showForecast(response) {
 
   forecastInfo.innerHTML = forecastHTML;
 }
+
+//Set the city searched on the API//
 function showCity(city) {
   let apiKey = "16830bfc1e47231d3a538e2cfef02d61";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
 }
+
+//Set coordinates of current city of location on the API//
 function showPosition(position) {
   let apiKey = "16830bfc1e47231d3a538e2cfef02d61";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`;
@@ -154,11 +146,13 @@ function showPosition(position) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 
+//Get current city of location //
 function showCurrentcity(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+//Get the city that is being searched //
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;

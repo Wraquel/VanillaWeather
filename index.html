@@ -21,11 +21,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Weather App</title>
+    <title>Day/Night Weather App</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="conteiner">
+    <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app mt-5 mb-4 mx-3 py-4 px-5" id="weather-app">
           <form class="search-form" id="search-form">
@@ -85,24 +85,23 @@
               </ul>
             </div>
           </div>
-          <hr />
+        
           <div class="weathering-forecast" id="forecast">
         </div>
         <small>
-          <div class="last-updated">
-          Last updated <span class="last-updated-hour"></span>
+          <div class="local-time">
+          <span class="last-updated-hour"></span>
         </div>
       </div>
         </small> 
     
-        <div class="open-source"> Open-source code by
+        <div class="open-source"> 
           <a
             id="link-github"
             href="https://github.com/Wraquel/Weather-app-RaquelW"
             target="_blank"
-          > Raquel W.
-        </a>
-      </div>
+            > Open-source</a>  code by Raquel W.
+        </div>
       </div>
     <script src="src/index.js"></script>
   </body>

@@ -1,40 +1,46 @@
+:root {
+  --primary-color: #132743;
+  --secondary-color: #faf9f0;
+  --terciary-color: darkgray;
+  --quaternary-color: whitesmoke;
+}
 body {
-  color: #132743;
+  color: whitesmoke;
 }
 
 .weather-app-wrapper {
-  min-width: 880px;
-  max-width: 700px;
+  min-width: 700px;
+  max-width: 750px;
   margin: auto;
 }
 .weather-app {
   border-radius: 12px;
-  border: 1px solid rgba(204, 204, 204, 0.13);
+  border: 1px solid var(--primary-color);
   font-family: "Hahmlet", serif;
 }
 
 #search-button,
 #current-button {
-  background-color: #132743;
-  border-color: #132743;
+  background-color: #132743e5;
+  border-color: var(--primary-color);
 }
 #city-input {
-  background-color: #faf9f0;
-  border-color: #13274398;
+  background-color: var(--secondary-color);
+  border-color: var(--primary-color);
 }
 #search-button:hover {
-  background-color: #faf9f0;
-  color: #132743;
+  background-color: var(--terciary-color);
+  color: var(--primary-color);
   transition: ease-in-out 2ms;
 }
 #current-button:hover {
-  background-color: #faf9f0;
-  color: #132743;
+  background-color: var(--terciary-color);
+  color: var(--primary-color);
   transition: ease-in-out 2ms;
 }
 
 h1 {
-  color: #132743;
+  color: var(--quaternary-color);
   font-size: 35px;
   margin: 10px auto 0px auto;
 }
@@ -46,7 +52,7 @@ li::first-letter {
   text-transform: capitalize;
 }
 .description {
-  color: orangered;
+  color: var(--primary-color);
   font-weight: bolder;
   line-height: 35px;
 }
@@ -67,12 +73,10 @@ li::first-letter {
   position: relative;
   bottom: 60px;
 }
-hr {
-  margin-top: -5px;
-}
 
 .weathering-forecast {
   text-align: center;
+  color: var(--primary-color);
 }
 .forecast-days {
   font-weight: bolder;
@@ -81,20 +85,24 @@ hr {
 .forecast-temperature-min {
   font-size: 13px;
 }
-.last-updated {
+.forecast-temperature-max {
+  font-weight: bold;
+}
+.local-time {
+  font-size: 13px;
+  color: var(--primary-color);
   position: relative;
   top: 24px;
   right: 35px;
 }
 .open-source {
   font-size: 13px;
-  text-align: right;
+  text-align: center;
   position: relative;
-  bottom: 22px;
-  color: orangered;
+  bottom: 24px;
+  color: var(--primary-color);
 }
 a {
   text-decoration: none;
   font-weight: 600;
-  color: #faf9f0;
 }
